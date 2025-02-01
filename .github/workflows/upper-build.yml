@@ -1,6 +1,6 @@
 name: upper-build
 
-run-name: Deploy by @${{ github.actor }}
+# run-name: Deploy by @${{ github.actor }}
 
 on:
     push: 
