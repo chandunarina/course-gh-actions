@@ -13,5 +13,11 @@ jobs:
         name: "go-project-upper-build"
         runs-on: ubuntu-latest
         steps:
+            # Step with a name
             - name: "print go version"
+              run: go version
+            - uses: actions/setup-go@v5
+              with:
+                go-version: '1.22'
+            - name: "print go version after setting up 1.22"
               run: go version
