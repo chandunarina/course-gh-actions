@@ -1,0 +1,17 @@
+name: upper-build
+
+run-name: Deploy by @${{ github.actor }}
+
+on:
+    push: 
+        paths: 
+            - ".github/workflows/upper-build.yml"
+            - "upper/**"
+
+jobs:
+    build:
+        name: "go-project-upper-build"
+        runs-on: ubuntu-latest
+        steps:
+            - name: "print go version"
+              run: go version
