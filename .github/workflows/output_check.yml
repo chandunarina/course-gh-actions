@@ -8,7 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: step1
-        run: echo
+        run: |
+          echo ${{ github.ref }}
+          echo "$GITHUB_OUTPUT"
+          echo $GITHUB_OUTPUT
+          echo "$GITHUB_ENV"
   job1:
     runs-on: ubuntu-latest
     # Map a step output to a job output
@@ -22,6 +26,8 @@ jobs:
         run: echo "$GITHUB_OUTPUT"
       - id: step2
         run: echo "test=world" >> "$GITHUB_OUTPUT"
+      - id: step3
+        run: echo "$GITHUB_ENV"
   job2:
     runs-on: ubuntu-latest
     needs: job1
