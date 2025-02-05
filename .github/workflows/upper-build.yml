@@ -13,6 +13,11 @@ jobs:
         name: "go-project-upper-build"
         runs-on: ubuntu-latest
         steps:
+            - run: pwd && ls -al
+            - name: "check-out-repo"
+              uses: actions/checkout@v4
+            - run: pwd && ls -al
+            
             # Step with a name
             - name: "print go version"
               run: go version
