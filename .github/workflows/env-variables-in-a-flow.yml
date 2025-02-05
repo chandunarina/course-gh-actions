@@ -13,9 +13,10 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
         env:
           First_Name: Mona
+        id: step1
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
   greeting_job_windows:
     runs-on: windows-latest
     steps:

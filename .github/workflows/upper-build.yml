@@ -21,6 +21,13 @@ jobs:
                 go-version: '1.22'
             - name: "print go version after setting up 1.22"
               run: go version
+
+            - name: "print dotnet runtimes and SDK versions"
+              id: printDotNetEnvDetails
+              run: |
+                pwd && dotnet --list-runtimes
+                dotnet --list-sdks
+
             - name: "setup dotnet"
               uses: actions/setup-dotnet@v4
               id: setupDotnetId
