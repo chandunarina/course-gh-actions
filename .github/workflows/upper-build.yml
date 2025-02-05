@@ -27,6 +27,17 @@ jobs:
             - name: "print go version after setting up 1.22"
               run: go version
 
+            - name: "build & test go"
+              id: buildAndTest
+              run: |
+                pwd
+                ls
+                go build
+                ls
+                go test
+                ./upper foo the bar
+              working-directory: ./upper
+
             - name: "print dotnet runtimes and SDK versions"
               id: printDotNetEnvDetails
               run: |
