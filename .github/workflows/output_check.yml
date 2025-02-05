@@ -19,9 +19,9 @@ jobs:
       - id: step1
         run: |
           echo ${{ github.ref }}
-          echo "GITHUB_OUTPUT ==> $GITHUB_OUTPUT"
-          echo "GITHUB_OUTPUT ==> " $GITHUB_OUTPUT
-          echo "GITHUB_ENV:= $GITHUB_ENV"
+          echo "GITHUB_OUTPUT ==> $env:GITHUB_OUTPUT"
+          echo "GITHUB_OUTPUT ==> " $env:GITHUB_OUTPUT
+          echo "GITHUB_ENV:= $env:GITHUB_ENV"
   job1:
     runs-on: ubuntu-latest
     # Map a step output to a job output
