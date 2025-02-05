@@ -16,8 +16,8 @@ jobs:
             - run: pwd && ls -al
             - name: "check-out-repo"
               uses: actions/checkout@v4
-            - run: pwd && ls -al
-            
+            - run: pwd && ls -R
+
             # Step with a name
             - name: "print go version"
               run: go version
