@@ -46,4 +46,16 @@ jobs:
                 echo "print1"
                 echo "print2"
             }
-        
+
+    one_line_env_variable:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Defining a new Environment Variable
+          run: |                          
+            ONE_LINE_TEXT="This is a one-line text"
+            echo "ONE_LINE_TEXT_ENV_VAR=$ONE_LINE_TEXT" >> $GITHUB_ENV
+            
+        - name: Using the previously defined environment variable
+          run: |
+            echo ${{ env.ONE_LINE_TEXT_ENV_VAR }}            
+            
