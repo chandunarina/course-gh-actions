@@ -16,6 +16,8 @@ jobs:
       - run: gh --version
       - run: gh auth status
       - run: gh repo list
+      - name: checkout the repository as to list the issues in next step, we've to be in repo context
+        uses: actions/checkout@v4
       - run: gh issue list
       - run: gh workflow list
       - run: gh api /repos/:owner/:repo/actions/workflows
