@@ -59,7 +59,7 @@ jobs:
           run: |
             echo ${{ env.ONE_LINE_TEXT_ENV_VAR }}            
             
-    build:
+    multi_line_env_variable:
         runs-on: ubuntu-latest
         steps:
         - name: Defining a new Environment Variable
@@ -76,4 +76,14 @@ jobs:
             
         - name: Using the previously defined environment variable
           run: |
-            echo ${{ env.MULTI_LINES_TEXT_ENV_VAR }}            
+            echo "multi-line-variable is: ${{ env.MULTI_LINES_TEXT_ENV_VAR }}""
+    set_output_variable:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Set color
+          id: color-selector
+          run: echo "SELECTED_COLOR=green" >> "$GITHUB_OUTPUT"
+        - name: Get color
+          env:
+            SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
+          run: echo "The selected color is $SELECTED_COLOR"                 
