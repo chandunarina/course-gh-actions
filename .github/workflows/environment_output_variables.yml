@@ -68,10 +68,10 @@ jobs:
                                 this is line two \n
                                 this is line three \n"    
 
-            echo "MULTI_LINES_TEXT_ENV_VAR<<XYZ" >> $GITHUB_ENV
+            echo "MULTI_LINES_TEXT_ENV_VAR<<EOF" >> $GITHUB_ENV
             # here we can place the command that will generate multi-line text
             echo $MULTI_LINES_TEXT >> $GITHUB_ENV
-            echo "XYZ" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
             
         - name: Using the previously defined environment variable
           run: |
