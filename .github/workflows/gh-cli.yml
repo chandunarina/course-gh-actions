@@ -1,0 +1,19 @@
+name: github-cli
+
+on:
+  workflow_dispatch: # enables manual triggering of this workflow run
+  push: 
+    paths: 
+      - ".github/workflows/gh-cli.yml"
+
+jobs:
+  cli: # explore github cli commands and authentication & GITHUB_TOKEN permissions
+    runs-on: ubuntu-latest
+    steps:
+      - run: env
+      - run: gh --version
+      - run: gh auth status
+      - run: gh repo list
+      - run: gh issue list
+      - run: gh workflow list
+      - run: gh api /repos/:owner/:repo/actions/workflows
