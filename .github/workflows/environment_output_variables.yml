@@ -1,0 +1,42 @@
+name: environment-and-output
+
+on: 
+    workflow_dispatch: 
+
+jobs:
+    set_env_variables:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Set environment variable
+              run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
+            - name: Use environment variable
+              run: |
+                echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
+    set_env_variables_2:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Store build timestamp
+          run: echo "BUILD_TIME=$(date +'%T')" >> $GITHUB_ENV
+
+        - name: Deploy using stored timestamp
+          run: echo "Deploying at $BUILD_TIME"    
+        - name: Set the value
+          id: step_one
+          run: |
+            echo "action_state=yellow" >> "$GITHUB_ENV"
+        - name: Use the value
+          id: step_two
+          run: |
+            printf '%s\n' "$action_state" # This will output 'yellow'       
+            
+        - name: Set the value in bash
+          id: step_three
+          run: |
+            {
+                echo 'JSON_RESPONSE<<EOF'
+                curl https://example.com
+                echo EOF
+            } >> "$GITHUB_ENV"
+        - name: print multi-line env value
+          run: echo "$JSON_RESPONSE"
+        
