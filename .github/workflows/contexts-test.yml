@@ -10,4 +10,6 @@ jobs:
             key_one: "value_one"
         steps:
             - name: print github context
-              run: echo ${{github}}
+              env:
+                GITHUB_CONTEXT: ${{toJson(github)}}
+              run: echo $GITHUB_CONTEXT
