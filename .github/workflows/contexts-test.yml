@@ -1,0 +1,13 @@
+name: practice-flow-for-understanding-contexts
+
+on:
+    workflow_dispatch: 
+
+jobs:
+    printGithubContext:
+        runs-on: ubuntu-latest
+        env:
+            key_one: "value_one"
+        steps:
+            - name: print github context
+              run: echo ${{github}}
