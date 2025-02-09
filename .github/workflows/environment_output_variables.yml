@@ -39,4 +39,11 @@ jobs:
             } >> "$GITHUB_ENV"
         - name: print multi-line env value
           run: echo "$JSON_RESPONSE"
+
+        - name: run multiline command
+          run: |
+            {
+                echo "print1"
+                echo "print2"
+            }
         
