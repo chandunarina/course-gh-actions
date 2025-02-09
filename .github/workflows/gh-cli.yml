@@ -10,8 +10,8 @@ jobs:
   cli: # explore github cli commands and authentication & GITHUB_TOKEN permissions
     runs-on: ubuntu-latest
     env:
-    #   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # this also works
     steps:
       - run: env
       - run: gh --version
