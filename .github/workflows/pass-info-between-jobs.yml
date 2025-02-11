@@ -50,6 +50,7 @@ jobs:
         run: |
           version="${{ matrix.version }}"
           echo "output_${version}=${version}" >> "$GITHUB_OUTPUT"
+          echo "current matrix-version is: ${{matrix.version}}"
       - name: print "$GITHUB_OUTPUT"
         id: step1
         run: |
