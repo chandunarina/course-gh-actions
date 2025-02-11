@@ -6,6 +6,8 @@ on:
 jobs:
   job_one:
     runs-on: ${{ matrix.os }}
+    outputs:
+      MATRIX_OUTPUT: ${{ toJson(matrix) }}
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
