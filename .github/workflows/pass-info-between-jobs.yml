@@ -58,6 +58,7 @@ jobs:
           echo "output_${version}=${version}" >> "$GITHUB_OUTPUT"
           echo "GITHUB_OUTPUT of step1:= $GITHUB_OUTPUT"
           echo "updated GITHUB_OUTPUT of STEP1: $(cat $GITHUB_OUTPUT)"
+          echo '${{ toJSON(steps.gen_output.outputs) }}' 
 
   job4:
     runs-on: ubuntu-latest
