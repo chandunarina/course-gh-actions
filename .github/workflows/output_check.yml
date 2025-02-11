@@ -18,7 +18,11 @@ jobs:
         run: echo "github_env_path=$GITHUB_ENV" >>$GITHUB_ENV
       - id: step3
         name: using github_env_path
-        run: echo ${{steps.step2.outputs.github_env_path}}
+        run: echo ${{env.github_env_path}}
+      - name: print "$GITHUB_ENV"
+        id: step4
+        run: echo "$(cat ${{env.github_env_path}})"              
+
   job01:
     runs-on: windows-latest
     steps:
