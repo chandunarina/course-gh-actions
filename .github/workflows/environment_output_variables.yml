@@ -19,11 +19,16 @@ jobs:
               name: set github_env_path variable into $GITHUB_ENV
               run: echo "github_env_path=$GITHUB_ENV" >>$GITHUB_ENV
             - id: step4
-              name: printing github_env_path
+              name: printing "$GITHUB_ENV" file PATH
               run: echo ${{env.github_env_path}}
             - name: print "$GITHUB_ENV" file content
               id: step5
-              run: echo "$(cat ${{env.github_env_path}})"                            
+              run: echo "$(cat ${{env.github_env_path}})" 
+            - id: step6
+              name: accessing all previously defined Environment variables of the current job
+              run: |
+                echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
+                echo "The value of github_env_path is $github_env_path"                        
     set_env_variables_2:
         runs-on: ubuntu-latest
         steps:
