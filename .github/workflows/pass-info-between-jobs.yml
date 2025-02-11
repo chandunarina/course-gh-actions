@@ -31,7 +31,7 @@ jobs:
           echo '${{ toJSON(needs.job1.outputs) }}'    
       - name: print previous job's outputs by setting step-level env
         id: step2
-        run: echo "${{env}}"
+        run: echo "${{toJson(env)}}"
 
   job3:
     runs-on: ubuntu-latest
