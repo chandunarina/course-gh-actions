@@ -86,4 +86,6 @@ jobs:
         - name: Get color
           env:
             SELECTED_COLOR: ${{ steps.color-selector.outputs.SELECTED_COLOR }}
-          run: echo "The selected color is $SELECTED_COLOR"                 
+          run: echo "The selected color is $SELECTED_COLOR"     
+        - name: Get color directly from previous step's output
+          run: echo "The selected color is ${{ steps.color-selector.outputs.SELECTED_COLOR }}"        
