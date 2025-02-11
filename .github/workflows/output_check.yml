@@ -13,6 +13,12 @@ jobs:
           echo "GITHUB_OUTPUT ==> $GITHUB_OUTPUT"
           echo "GITHUB_OUTPUT ==> " $GITHUB_OUTPUT
           echo "GITHUB_ENV:= $GITHUB_ENV"
+      - id: step2
+        name: set github_env_path variable into $GITHUB_ENV
+        run: echo "github_env_path=$GITHUB_ENV" >>$GITHUB_ENV
+      - id: step3
+        name: using github_env_path
+        run: echo ${{steps.step2.outputs.github_env_path}}
   job01:
     runs-on: windows-latest
     steps:
