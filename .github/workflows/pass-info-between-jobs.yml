@@ -30,9 +30,10 @@ jobs:
           echo "${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}"
           echo '${{ toJSON(needs.job1.outputs) }}'    
       - name: print previous job's outputs by setting step-level env
-        id: step2
-        run: echo "${{toJson(env)}}"
-
+        id: step2 # step-level env of previous steps is not available to next steps
+        run: |
+          echo "${{toJson(env)}}"   
+          echo "${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}}"
   job3:
     runs-on: ubuntu-latest
     outputs:
