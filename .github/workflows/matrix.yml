@@ -1,8 +1,12 @@
 name: Test matrix
-on: push
+on: 
+    # push:
+    workflow_dispatch:
 
 jobs:
-  build:
+  job_one:
+    outputs:
+      key_${{ matrix.os }}: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
