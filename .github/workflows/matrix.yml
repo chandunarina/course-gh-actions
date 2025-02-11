@@ -22,3 +22,14 @@ jobs:
         run: |
           echo "[os: ${{ matrix.os }}] [node: ${{ matrix.node }}]"   
           echo "${{ toJson(matrix) }}"   
+
+  job_two:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        option1: ["value1", "value2"]
+    outputs:
+      ${{ matrix.option1 }}-output: ${{ steps.step1.outputs.test }}
+    steps:
+      - id: step1
+        run: echo "test=hello" >> "$GITHUB_OUTPUT"          
