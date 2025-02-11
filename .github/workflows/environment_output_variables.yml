@@ -13,7 +13,7 @@ jobs:
               run: |
                 echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
             - name: Use environment variable setup in the previous step of the same job again
-            run: |
+              run: |
                 echo ${{ env.MY_ENV_VAR }}            
     set_env_variables_2:
         runs-on: ubuntu-latest
