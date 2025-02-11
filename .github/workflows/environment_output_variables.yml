@@ -109,6 +109,7 @@ jobs:
           run: |
             echo "multi-line-variable is: ${{ env.MULTI_LINES_TEXT_ENV_VAR }}"
             echo "${{env.MULTI_LINES_TEXT_ENV_VAR}}"
+            echo ${{env.MULTI_LINES_TEXT_ENV_VAR}}
     set_output_variable:
         runs-on: ubuntu-latest
         steps:
