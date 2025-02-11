@@ -9,9 +9,12 @@ jobs:
         steps:
             - name: Set environment variable
               run: echo "MY_ENV_VAR=myValue" >> $GITHUB_ENV
-            - name: Use environment variable
+            - name: Use environment variable setup in the previous step of the same job
               run: |
                 echo "The value of MY_ENV_VAR is $MY_ENV_VAR"
+            - name: Use environment variable setup in the previous step of the same job again
+            run: |
+                echo ${{ env.MY_ENV_VAR }}            
     set_env_variables_2:
         runs-on: ubuntu-latest
         steps:
