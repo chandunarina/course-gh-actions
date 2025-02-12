@@ -12,7 +12,7 @@ jobs:
               run: |
                 echo "STEP_ONE_ENV_VAR=STEP_ONE_ENV_VALUE" >> $GITHUB_ENV
                 echo "GITHUB_ENV of step1:= $GITHUB_ENV"
-                echo "updated GITHUB_ENV of STEP1: $(cat $GITHUB_ENV)"
+                echo "updated GITHUB_ENV file of STEP1: $(cat $GITHUB_ENV)"
             - name: Use environment variable setup in the previous step of the same job
               id: step2
               run: |
