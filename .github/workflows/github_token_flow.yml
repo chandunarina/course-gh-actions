@@ -14,6 +14,15 @@ jobs:
           pwd
           dir
         shell: powershell
+  job1:
+    runs-on: windows-latest
+    steps:
+      - name: print pwd
+        run: |
+          pwd
+          cd ..
+          pwd
+        shell: powershell
   open-issue:
     runs-on: ubuntu-latest
     permissions:
