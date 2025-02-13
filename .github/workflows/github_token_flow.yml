@@ -10,8 +10,10 @@ jobs:
     steps:
       - name: print pwd
         run: |
-          echo pwd
+          echo $pwd
+          pwd
           dir
+        shell: powershell
   open-issue:
     runs-on: ubuntu-latest
     permissions:
