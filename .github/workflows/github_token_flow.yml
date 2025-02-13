@@ -5,6 +5,13 @@ on:
 permissions: read-all
 
 jobs:
+  job:
+    runs-on: windows-latest
+    steps:
+      - name: print pwd
+        run: |
+          echo pwd
+          dir
   open-issue:
     runs-on: ubuntu-latest
     permissions:
