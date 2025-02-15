@@ -47,7 +47,7 @@ jobs:
                 body: "Thanks for your contribution!"
             }            
             //create a comment thanking the contributore
-            const comment = octokit.rest.issues.createComment(create_comment_input_dict);
+            const comment = github.rest.issues.createComment(create_comment_input_dict);
             console.log(`comment: $(comment)`)
             
             return issue_number + context.repo.owner + context.repo.repo
