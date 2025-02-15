@@ -15,7 +15,10 @@ jobs:
       - name: View context attributes
         uses: actions/github-script@v7
         with:
-          script: console.log(context)
+          script: |
+            console.log(context)
+            console.log(context.issue)
+            console.log(context.repo)
 
       - name: create an issue
         id: issue_script
