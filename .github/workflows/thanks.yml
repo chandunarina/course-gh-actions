@@ -29,11 +29,13 @@ jobs:
           retries: 3
           script: |
             const issue_number = context.issue.number || 2
-            const issue = await github.rest.issues.get({
+            const get_input_dict = {
                 issue_number: issue_number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-            })          
+            }
+            console.log(get_input_dict)
+            const issue = await github.rest.issues.get(get_input_dict)          
             console.log(`issue: ${JSON.stringify(issue)}`)
             return issue_number + context.repo.owner + context.repo.repo
       - run: echo ${{ steps.issue_script.outputs.result }}
