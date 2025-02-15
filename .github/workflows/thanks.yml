@@ -60,10 +60,10 @@ jobs:
                 issue_number: issue_number,
                 labels: ["todo-review"]
             }  
-            github.rest.issues.addLabels({add_label_input_dict)
+            await github.rest.issues.addLabels(add_label_input_dict)
 
             // make comment id available to subsequent steps
             return comment.data.id;
-            
+
       - run: echo ${{ steps.issue_script.outputs.result }}
           
