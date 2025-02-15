@@ -34,9 +34,22 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
             }
+
+            // look up an issue info
             console.log(get_input_dict)
             const issue = await github.rest.issues.get(get_input_dict)          
             console.log(`issue: ${JSON.stringify(issue)}`)
+
+            const create_comment_input_dict = {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue_number,
+                body: "Thanks for your contribution!"
+            }            
+            //create a comment thanking the contributore
+            const comment = octokit.rest.issues.createComment(create_comment_input_dict);
+            console.log(`comment: $(comment)`)
+            
             return issue_number + context.repo.owner + context.repo.repo
       - run: echo ${{ steps.issue_script.outputs.result }}
           
