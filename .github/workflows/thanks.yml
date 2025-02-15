@@ -12,6 +12,11 @@ jobs:
     permissions: 
         issues: read
     steps:
+      - name: View context attributes
+        uses: actions/github-script@v7
+        with:
+          script: console.log(context)
+
       - name: create an issue
         id: issue_script
         uses: actions/github-script@v7
