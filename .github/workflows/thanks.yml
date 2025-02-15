@@ -9,6 +9,8 @@ on:
 jobs:
   thanks:
     runs-on: ubuntu-latest
+    permissions: 
+        issues: read
     steps:
       - name: create an issue
         id: issue_script
