@@ -46,10 +46,24 @@ jobs:
                 issue_number: issue_number,
                 body: "Thanks for your contribution!"
             }            
+            
             //create a comment thanking the contributore
             const comment = await github.rest.issues.createComment(create_comment_input_dict);
-            console.log(`comment: ${JSON.stringify(comment)}`)
+            //console.log(`comment: ${JSON.stringify(comment)}`)
+            console.log(`comment id: ${comment.data.id}`);
+            console.log(comment.data);
+
+            // auto label
+            const add_label_input_dict = {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue_number,
+                labels: ["todo-review"]
+            }  
+            github.rest.issues.addLabels({add_label_input_dict)
+
+            // make comment id available to subsequent steps
+            return comment.data.id;
             
-            return issue_number + context.repo.owner + context.repo.repo
       - run: echo ${{ steps.issue_script.outputs.result }}
           
