@@ -21,4 +21,5 @@ jobs:
           retries: 3
           script: |
             return context.issue.number + context.repo.owner + context.repo.repo
+      - run: echo ${{ steps.issue_script.outputs.result }}
           
