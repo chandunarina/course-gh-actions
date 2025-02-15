@@ -48,7 +48,7 @@ jobs:
             }            
             //create a comment thanking the contributore
             const comment = await github.rest.issues.createComment(create_comment_input_dict);
-            console.log(`comment: ${comment}`)
+            console.log(`comment: ${JSON.stringify(comment)}`)
             
             return issue_number + context.repo.owner + context.repo.repo
       - run: echo ${{ steps.issue_script.outputs.result }}
