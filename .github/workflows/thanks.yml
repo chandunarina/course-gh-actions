@@ -20,7 +20,7 @@ jobs:
           result-encoding: string
           retries: 3
           script: |
-            github.rest.issues.get({
+            const issue = await github.rest.issues.get({
                 issue_number: context.issue.number || 2,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
