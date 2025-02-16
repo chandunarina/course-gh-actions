@@ -1,0 +1,15 @@
+name: Code Butler
+
+on: 
+  issue_comment: 
+    types: 
+        - created
+
+jobs:
+  log_comment:
+    runs-on: ubuntu-latest
+    steps:
+        - name:  log comment
+          run: echo 'Issue_Comment ${{ github.event.comment.body }}'
+        - run: echo '${{toJson(github.event)}}'
+          
