@@ -12,4 +12,14 @@ jobs:
         - name:  log comment
           run: echo 'Issue_Comment:= ${{ github.event.comment.body }}'
         - run: echo 'JSON_EVENT:= ${{toJson(github.event)}}'
+
+  chat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ca-dp/code-butler@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          cmd: chat
+          comment_body: ${{ github.event.comment.body }}  
           
