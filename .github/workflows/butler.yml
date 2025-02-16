@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name:  log comment
-          run: echo 'Issue_Comment ${{ github.event.comment.body }}'
-        - run: echo '${{toJson(github.event)}}'
+          run: echo 'Issue_Comment:= ${{ github.event.comment.body }}'
+        - run: echo 'JSON_EVENT:= ${{toJson(github.event)}}'
           
