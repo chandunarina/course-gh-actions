@@ -18,9 +18,12 @@ jobs:
           - run: dotnet test
           - run: ls -R
           - name: upload-api-single-file
+            id: upload-api-single-file
             uses: actions/upload-artifact@v4
             with:
-              name: api_exe
+              name: api_dll
               path: ./api/**/bin/Release/**/api.dll
-
+              include-hidden-files: true
+          - name: Output artifact ID
+            run:  echo 'Artifact ID is ${{ steps.upload-api-single-file.outputs.artifact-id }}'
         
