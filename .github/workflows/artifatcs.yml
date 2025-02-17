@@ -7,7 +7,7 @@ jobs:
     build:
         defaults:
           run:
-            working-directory: .api
+            working-directory: ./api
         name: dotnet release build
         runs-on: ubuntu-latest
         steps:
