@@ -43,7 +43,10 @@ jobs:
             run:  echo 'Artifact ID is ${{ steps.upload-api-single-file.outputs.artifact-id }}'  
 
           - name: copy required artifacts into ${{inputs.application_name}} folder
-            run: cp -r -f bin/Release/**/ "${{github.workspace}}/${{inputs.application_name}}"
+            run: |
+              cp -r -f bin/Release/**/ "${{github.workspace}}/${{inputs.application_name}}"
+              cp -f compose.yaml "${{github.workspace}}/${{inputs.application_name}}"
+              cp -f Makefile Dockerfile "${{github.workspace}}/${{inputs.application_name}}"
 
           - name: upload-app-artifacts
             id: upload-app-artifacts
