@@ -3,6 +3,9 @@ name: upload & download artifacts
 on: 
   workflow_dispatch: # manual triggering
 
+env:
+  APP_NAME: GHA_PRACTICE
+
 jobs:
     build:
         defaults:
@@ -16,7 +19,7 @@ jobs:
           - run: dotnet --list-sdks
           - run: dotnet build --configuration Release
           - run: dotnet test
-          - run: ls -R
+        #   - run: ls -R
           - name: upload-api-single-file
             id: upload-api-single-file
             uses: actions/upload-artifact@v4
