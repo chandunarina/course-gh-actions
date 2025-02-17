@@ -8,7 +8,7 @@ jobs:
         defaults:
           run:
             working-directory: ./api
-        name: dotnet release build
+        name: dotnet release build & upload
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
@@ -26,4 +26,17 @@ jobs:
               include-hidden-files: true
           - name: Output artifact ID
             run:  echo 'Artifact ID is ${{ steps.upload-api-single-file.outputs.artifact-id }}'
+
+    deploy:
+        name: download artifact
+        runs-on: ubuntu-latest
+        steps:
+          - name: Download Artifact
+            uses: actions/download-artifact@v4
+            with:
+              name: app
+              path: '.'
+          - name: Print Artifact Files
+            run: ls -R
+            
         
