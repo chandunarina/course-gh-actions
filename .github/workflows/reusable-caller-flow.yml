@@ -7,18 +7,32 @@ env:
   APP_NAME: GHA_PRACTICE
 
 jobs:
+  sample:
+    runs-on: ubuntu-latest
+    outputs:
+      app_name: ${{steps.app-name.outputs.APP_NAME}}
+    steps:
+      - name: print ${{env.APP_NAME}}
+        id: app-name
+        run: | 
+          echo "Application Name==> ${{env.APP_NAME}}"
+          echo "APP_NAME=${{env.APP_NAME}}" >> $GITHUB_OUTPUT
   call_build:
     name: call-build-flow
+    needs: sample
     uses: ./.github/workflows/reusable-api-build.yml
     secrets: inherit
     with:
       build_configuration: Release
       environment: dev
+      application_name: ${{ needs.sample.outputs.app_name }}
   deploy:
     name: call-deploy-flow
     needs: 
+      - sample
       - call_build
     uses: ./.github/workflows/reusable-api-deploy.yml
     secrets: inherit
     with:
       environment: dev
+      application_name: ${{ needs.sample.outputs.app_name }}

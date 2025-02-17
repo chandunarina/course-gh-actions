@@ -9,6 +9,10 @@ on:
         description: Github environment for deployment
         type: string
         required: true
+      application_name: 
+        description: Application Name for deployment
+        type: string
+        required: true
 
 defaults:
   run:
@@ -37,5 +41,18 @@ jobs:
               include-hidden-files: true
           - name: Output artifact ID
             run:  echo 'Artifact ID is ${{ steps.upload-api-single-file.outputs.artifact-id }}'  
+
+          - name: copy required artifacts into ${{inputs.application_name}} folder
+            run: cp -r -f bin/Release/**/ "${{github.workspace}}/${{inputs.application_name}}"
+
+          - name: upload-app-artifacts
+            id: upload-app-artifacts
+            uses: actions/upload-artifact@v4
+            with:
+              name: app_${{inputs.environment}}
+              path: ./${{inputs.application_name}}
+              include-hidden-files: true
+          - name: Output artifact ID
+            run:  echo 'Artifact ID is ${{ steps.upload-app-artifacts.outputs.artifact-id }}'  
         
 
