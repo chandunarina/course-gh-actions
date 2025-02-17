@@ -30,6 +30,8 @@ jobs:
     deploy:
         name: download artifact
         runs-on: ubuntu-latest
+        needs: 
+          - build
         steps:
           - name: Download Artifact
             uses: actions/download-artifact@v4
@@ -38,5 +40,5 @@ jobs:
               path: '.'
           - name: Print Artifact Files
             run: ls -R
-            
+
         
