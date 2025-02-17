@@ -5,6 +5,9 @@ on:
 
 jobs:
     build:
+        defaults:
+          run:
+            working-directory: .api
         name: dotnet release build
         runs-on: ubuntu-latest
         steps:
@@ -12,18 +15,11 @@ jobs:
           - run: dotnet --list-runtimes
           - run: dotnet --list-sdks
           - run: dotnet build --configuration Release
-            working-directory: ./api
           - run: dotnet test
-            working-directory: ./api
-    upload_api:
-      name: publish artifacts
-      runs-on: ubuntu-latest
-      needs: build
-      steps:
-        - name: upload-api-single-file
-          uses: actions/upload-artifact@v4
-          with:
-            name: api_exe
-            path: ./api/**/bin/Release/**/api.exe
+          - name: upload-api-single-file
+            uses: actions/upload-artifact@v4
+            with:
+              name: api_exe
+              path: ./api/**/bin/Release/**/api.exe
 
         
