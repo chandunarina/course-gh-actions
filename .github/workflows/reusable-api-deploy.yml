@@ -1,0 +1,24 @@
+on: 
+  workflow_call: 
+    inputs:
+      environment:
+        description: Github environment for deployment
+        type: string
+        required: true      
+
+defaults:
+  run:
+    shell: bash
+    
+jobs:
+  deploy:
+    name: download build artifact from reusable build call flow for ${{inputs.environment}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: api_${{inputs.environment}}
+          path: '.'
+      - name: Print Artifact Files
+        run: ls -R

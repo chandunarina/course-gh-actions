@@ -8,22 +8,17 @@ env:
 
 jobs:
   call_build:
-    name: call-build
+    name: call-build-flow
     uses: ./.github/workflows/reusable-api-build.yml
     secrets: inherit
     with:
       build_configuration: Release
       environment: dev
   deploy:
-    name: download build artifact from reusable build call flow
-    runs-on: ubuntu-latest
+    name: call-deploy-flow
     needs: 
       - call_build
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: api_dll
-          path: '.'
-      - name: Print Artifact Files
-        run: ls -R
+    uses: ./.github/workflows/reusable-api-deploy.yml
+    secrets: inherit
+    with:
+      environment: dev

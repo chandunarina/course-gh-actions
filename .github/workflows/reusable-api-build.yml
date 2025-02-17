@@ -32,7 +32,7 @@ jobs:
             id: upload-api-single-file
             uses: actions/upload-artifact@v4
             with:
-              name: api_dll
+              name: api_${{inputs.environment}}
               path: ./api/**/bin/Release/**/api.dll
               include-hidden-files: true
           - name: Output artifact ID
