@@ -21,6 +21,6 @@ jobs:
             uses: actions/upload-artifact@v4
             with:
               name: api_exe
-              path: ./api/**/bin/Release/**/api.exe
+              path: ./api/**/bin/Release/**/api.dll
 
         
