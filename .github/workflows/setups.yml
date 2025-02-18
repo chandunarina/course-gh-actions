@@ -37,8 +37,11 @@ jobs:
 
       - run: echo $(cat package.json)
 
-      - name: run serverless
+      - name: check serverless version
         run: serverless --version
+
+      - name: run serverless deploy
+        run: make deploy-api
         
 
         

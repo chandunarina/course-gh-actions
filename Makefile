@@ -17,3 +17,6 @@ dotnet-build:
 
 dotnet-test:
 	dotnet test
+
+deploy-api:
+	serverless deploy --conceal --verbose	
