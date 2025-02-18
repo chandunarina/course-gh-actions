@@ -10,7 +10,13 @@ jobs:
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
-        
+
+      - name: create cache directory
+        run: mkdir cache
+      - run: make create-cache
+      - run: ls -r
+        name: print cache folder
+        working-directory: ./cache  
       - name: run make file target
         run: |
           ls -R
