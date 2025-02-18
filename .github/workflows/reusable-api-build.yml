@@ -58,7 +58,8 @@ jobs:
             run: |
               cp -r -f bin/Release/**/ "${{github.workspace}}/${{inputs.application_name}}"
               cp -f compose.yaml "${{github.workspace}}/${{inputs.application_name}}"
-              cp -f Makefile Dockerfile "${{github.workspace}}/${{inputs.application_name}}"
+              cp -f Dockerfile "${{github.workspace}}/${{inputs.application_name}}"
+              cp -f ../Makefile "${{github.workspace}}/${{inputs.application_name}}"
             working-directory: ./api
 
           - name: upload-app-artifacts
