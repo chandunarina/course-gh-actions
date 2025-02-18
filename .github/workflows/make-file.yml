@@ -1,0 +1,14 @@
+name: make-file-test
+
+on: 
+  workflow_dispatch: 
+
+jobs:
+  make_file_test:
+    runs-on: ubuntu-latest
+    name: make-file-test
+    steps:
+      - name: run make file target
+        run: |
+          ls -R
+          make clear-cache
