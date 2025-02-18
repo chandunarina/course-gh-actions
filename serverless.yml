@@ -1,0 +1,28 @@
+service: sls-sample
+
+provider:
+  name: aws
+  runtime: dotnet6
+  lambdaHashingVersion: 20201221
+  versionFunctions: false
+
+  stackTags:
+    Name: ${self:custom.tags.name}
+    Application: sample-service
+    Environment: ${self:custom.tags.environment}
+
+custom:
+  stage: ${opt:stage}
+  region: ${opt:region}
+  accountName: rsa
+
+  memorySize: 128
+  # setupvars: ${file(./config/${self:custom.region}/${self:custom.stage}.yml):setupvars}
+  # envvars: ${file(./config/${self:custom.region}/${self:custom.stage}.yml):envvars}
+  tags:
+    application: sample-service
+    environment: dev
+    name: ${self:service}-${self:custom.tags.environment}
+    complianceType: NA
+    classificationLabel: Level1/Public
+    tier: APP
