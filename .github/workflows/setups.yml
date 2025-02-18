@@ -31,7 +31,9 @@ jobs:
           npm ls -g
         #   serverless --version
 
-      - run: ls -R
+      - run: ls -la
         name: print repo files after setup
+
+      - run: echo $(cat package.json)
 
         
