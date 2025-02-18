@@ -27,10 +27,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
-          - run: dotnet --list-runtimes
-          - run: dotnet --list-sdks
-          - run: dotnet build --configuration ${{inputs.build_configuration}}
-          - run: dotnet test
+          - run: make dotnet-list-runtimes
+            name: list dotnet runtimes
+          - run: make dotnet-list-sdks
+            name: list dotnet sdks
+          - run: make build_configuration=${{inputs.build_configuration}} dotnet-build
+            name: dotnet Release build
+          - run: make dotnet-test
+            name: dotnet test
         #   - run: ls -R
           - name: upload-api-single-file
             id: upload-api-single-file
