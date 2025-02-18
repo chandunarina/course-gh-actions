@@ -27,6 +27,12 @@ jobs:
       - name: Nuget Restore
         run: nuget restore course-gh-actions.sln
 
+      - name: Install Amazon Tools
+        run: dotnet tool install --global Amazon.Lambda.Tools
+
+      - name: Build Functions
+        run: dotnet-lambda package
+
       - name: Setup node
         uses: actions/setup-node@v4
         with:
