@@ -17,7 +17,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: latest
-          cache: yarn
+        #   cache: yarn
 
       - name: check node & npm versions
         run: |
@@ -27,7 +27,7 @@ jobs:
           npm ls -g
       - name: setup serverless
         run: |
-          npm install serverless@3.39.0
+          npm install -g serverless@3.39.0
           npm ls 
           npm ls -g
         #   serverless --version
