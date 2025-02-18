@@ -41,6 +41,7 @@ jobs:
         run: |
           serverless --version
           sls --version
+          yarn --version
 
     #   - name: run serverless deploy
     #     run: make deploy-api
