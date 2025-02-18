@@ -3,6 +3,10 @@ name: setups
 on: 
   workflow_dispatch: # manual
 
+env:
+  REGION: us-east-1
+  STAGE: dev  
+
 jobs:
   setup_serverless:
     runs-on: ubuntu-latest
@@ -44,7 +48,7 @@ jobs:
           yarn --version
 
       - name: run serverless package
-        run: make package-api
+        run: make stage=${{ env.STAGE }} region=${{ env.REGION }} package-api
         
 
         
