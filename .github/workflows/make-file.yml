@@ -23,3 +23,6 @@ jobs:
         run: |
           ls -R
           make clear-cache
+      - name: print ${{github.workspace}} directory after clear-cache
+        run: |
+          ls -R
