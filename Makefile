@@ -18,5 +18,8 @@ dotnet-build:
 dotnet-test:
 	dotnet test
 
+package-api:
+	serverless package --stage ${stage} --region ${region} --verbose
+
 deploy-api:
-	serverless deploy --conceal --verbose	
+	serverless deploy --stage ${stage} --region ${region} --conceal --verbose
