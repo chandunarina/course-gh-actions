@@ -18,6 +18,7 @@ jobs:
   deploy:
     name: download build artifact from reusable build call flow for ${{inputs.environment}}
     runs-on: ubuntu-latest
+    environment: ${{inputs.environment}}
     steps:
       - name: Download Artifact
         uses: actions/download-artifact@v4
