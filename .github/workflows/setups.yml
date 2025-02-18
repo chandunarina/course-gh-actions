@@ -7,6 +7,12 @@ jobs:
   setup_serverless:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+
+      - run: ls -R
+        name: print repo files before setup
+
       - name: Setup node
         uses: actions/setup-node@v4
         with:
