@@ -38,10 +38,12 @@ jobs:
       - run: echo $(cat package.json)
 
       - name: check serverless version
-        run: serverless --version
+        run: |
+          serverless --version
+          sls --version
 
-      - name: run serverless deploy
-        run: make deploy-api
+    #   - name: run serverless deploy
+    #     run: make deploy-api
         
 
         
