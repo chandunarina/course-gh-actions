@@ -9,6 +9,14 @@ on:
         description: Application Name for deployment
         type: string
         required: true
+      stage:
+        description: The stage of the app to deploy to
+        required: true
+        type: string
+      region:
+        description: The region to deploy to
+        required: true
+        type: string
 
 defaults:
   run:

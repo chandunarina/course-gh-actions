@@ -17,6 +17,14 @@ jobs:
       - run: ls -R
         name: print repo files before setup
 
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+        with:
+          nuget-version: latest
+
+      - name: Nuget Restore
+        run: nuget restore course-gh-actions.sln
+
       - name: Setup node
         uses: actions/setup-node@v4
         with:
