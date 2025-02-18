@@ -23,3 +23,4 @@ jobs:
           npm install serverless@3.39.0
           npm ls 
           npm ls -g
+          serverless --version
