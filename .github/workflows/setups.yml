@@ -36,4 +36,8 @@ jobs:
 
       - run: echo $(cat package.json)
 
+      - name: run serverless
+        run: serverless --version
+        
+
         
