@@ -33,6 +33,9 @@ jobs:
     runs-on: ubuntu-22.04
     needs: 
       - detect
+    if: |
+      github.actor != 'dependabot[bot]' &&
+      needs.detect.outputs.needs_deployment == 'true'
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
