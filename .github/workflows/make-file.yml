@@ -32,13 +32,13 @@ jobs:
 
       - name: create cache directory
         run: mkdir cache
-        working-directory: ./make_file_dir
+        working-directory: ${{github.workspace}}/make_file_dir
 
       - run: make create-cache
-        working-directory: ./make_file_dir
-        
+        working-directory: ${{github.workspace}}/make_file_dir
+
       - run: |
           ls -r
           echo "$(cat hello_world.txt)"
         name: print cache folder
-        working-directory: ./make_file_dir/cache  
+        working-directory: ${{github.workspace}}/make_file_dir/cache  
