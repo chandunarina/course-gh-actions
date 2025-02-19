@@ -28,8 +28,10 @@ jobs:
           ls -R
 
       - name: copy make file
-        run: cp -f Makefile "${{github.workspace}}/make_file_dir"   
-               
+        run: |
+          mkdir make_file_dir
+          cp -f Makefile "${{github.workspace}}/make_file_dir"   
+
       - name: print ${{github.workspace}} directory after copy make file
         run: |
           ls -R
