@@ -8,8 +8,31 @@ env:
   STAGE: dev  
 
 jobs:
+  detect:
+    name: Detect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      needs_deployment: ${{ steps.should_deploy.outputs.any_modified }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check if should deploy
+        id: should_deploy
+        uses: tj-actions/changed-files@v41
+        with:
+          files: |
+            .github/**
+            api/**
+            upper/**
+            Makefile
+            serverless.yml
   setup_serverless:
     runs-on: ubuntu-22.04
+    needs: 
+      - detect
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
