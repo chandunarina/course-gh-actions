@@ -26,3 +26,19 @@ jobs:
       - name: print ${{github.workspace}} directory after clear-cache
         run: |
           ls -R
+
+      - name: copy make file
+        run: cp -f Makefile "${{github.workspace}}/make_file_dir"          
+
+      - name: create cache directory
+        run: mkdir cache
+        working-directory: ./make_file_dir
+
+      - run: make create-cache
+        working-directory: ./make_file_dir
+        
+      - run: |
+          ls -r
+          echo "$(cat hello_world.txt)"
+        name: print cache folder
+        working-directory: ./make_file_dir/cache  
