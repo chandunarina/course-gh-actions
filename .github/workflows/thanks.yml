@@ -21,6 +21,10 @@ jobs:
             // console.log(context.repo)
             console.log(`context: ${JSON.stringify(context)}`)
             console.log('==============================')
+            console.log(`context.issue: ${JSON.stringify(context.issue)}`)
+            console.log('==============================')
+            console.log(`context.repo: ${JSON.stringify(context.repo)}`)
+            console.log('==============================')
 
       - name: create an issue
         id: issue_script
