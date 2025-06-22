@@ -18,7 +18,8 @@ jobs:
         id: step1
         run: echo "$Job_Level_Greeting $Step_Level_First_Name. Today is $WORKFLOW_LEVEL_DAY_OF_WEEK!"
       - run: echo $key2
-      - name: Accessing Varibles in different scopes using context
+      - name: Accessing Varibles in different scopes using context 
+        #(IF WE USE, CONTEXT VARIABLES, then the variables are interpreted before the job is sent to the RUNNER machine)
         env:
           Step_Level_First_Name: Mona
         run: echo ${{env.Job_Level_Greeting}} ${{env.Step_Level_First_Name}}. Today is ${{env.WORKFLOW_LEVEL_DAY_OF_WEEK}}
@@ -35,3 +36,17 @@ jobs:
         run: echo "${{env.Job_Level_Greeting}} ${{env.Step_Level_First_Name}}. Today is ${{env.WORKFLOW_LEVEL_DAY_OF_WEEK}}"
     env:
       Job_Level_Greeting: Hello #environment variables defined after steps
+
+  conditional_greeting_job:
+    runs-on: ubuntu-latest
+    env:
+      Greeting: Hello
+    steps:
+      - name: "Say Hello Mona it's Monday"
+        if: ${{ env.WORKFLOW_LEVEL_DAY_OF_WEEK == 'Monday' }}
+        #Here in this if condition, we can't use the environment variables in the Runner (machine/os) environment variable format i.e. $WORKFLOW_LEVEL_DAY_OF_WEEK
+        #as this part of the workflow is interpolated before the job is sent to the Runner. infact, this is interpolated and the decision happens if this job needs to be sent to the
+        #Runner or not
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona      
