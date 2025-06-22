@@ -32,6 +32,6 @@ jobs:
       - name: Accessing Varibles in different scopes using context
         env:
           Step_Level_First_Name: Mona
-        run: echo ${{env.Job_Level_Greeting}} ${{env.Step_Level_First_Name}}. Today is ${{env.WORKFLOW_LEVEL_DAY_OF_WEEK}}
+        run: echo "${{env.Job_Level_Greeting}} ${{env.Step_Level_First_Name}}. Today is ${{env.WORKFLOW_LEVEL_DAY_OF_WEEK}}"
     env:
       Job_Level_Greeting: Hello #environment variables defined after steps
