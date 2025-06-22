@@ -43,7 +43,7 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
-        if: ${{ env.WORKFLOW_LEVEL_DAY_OF_WEEK == 'Monday' }}
+        if: ${{ env.WORKFLOW_LEVEL_DAY_OF_WEEK == 'Monday' }} #in if condition, "${{ }}" is optional
         #Here in this if condition, we can't use the environment variables in the Runner (machine/os) environment variable format i.e. $WORKFLOW_LEVEL_DAY_OF_WEEK
         #as this part of the workflow is interpolated before the job is sent to the Runner. infact, this is interpolated and the decision happens if this job needs to be sent to the
         #Runner or not
