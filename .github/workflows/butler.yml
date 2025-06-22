@@ -14,7 +14,6 @@ jobs:
         - name:  log comment
           run: echo 'Issue_Comment:= ${{ github.event.comment.body }}'
         - run: echo 'JSON_EVENT:= ${{toJson(github.event)}}'
-
   chat:
     runs-on: ubuntu-latest
     steps:
