@@ -4,25 +4,33 @@ on:
   workflow_dispatch
 
 env:
-  DAY_OF_WEEK: Monday
+  WORKFLOW_LEVEL_DAY_OF_WEEK: Monday
 
 jobs:
   greeting_job:
     runs-on: ubuntu-latest
     env:
-      Greeting: Hello
+      Job_Level_Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
         env:
-          First_Name: Mona
+          Step_Level_First_Name: Mona
         id: step1
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        run: echo "$Job_Level_Greeting $Step_Level_First_Name. Today is $WORKFLOW_LEVEL_DAY_OF_WEEK!"
+      - name: Accessing Varibles in different scopes using context
+        env:
+          Step_Level_First_Name: Mona
+        run: echo ${{env.Job_Level_Greeting}} ${{env.Step_Level_First_Name}}. Today is ${{env.WORKFLOW_LEVEL_DAY_OF_WEEK}}
   greeting_job_windows:
     runs-on: windows-latest
     steps:
       - name: "Say Hello Mona it's Monday"
         env:
-          First_Name: Mona          
-        run: echo "$env:Greeting $env:First_Name. Today is $env:DAY_OF_WEEK!"
+          Step_Level_First_Name: Mona          
+        run: echo "$env:Job_Level_Greeting $env:Step_Level_First_Name. Today is $env:WORKFLOW_LEVEL_DAY_OF_WEEK!"
+      - name: Accessing Varibles in different scopes using context
+        env:
+          Step_Level_First_Name: Mona
+        run: echo ${{env.Job_Level_Greeting}} ${{env.Step_Level_First_Name}}. Today is ${{env.WORKFLOW_LEVEL_DAY_OF_WEEK}}
     env:
-      Greeting: Hello
+      Job_Level_Greeting: Hello #environment variables defined after steps
