@@ -35,13 +35,3 @@ jobs:
         run: echo ${{env.Job_Level_Greeting}} ${{env.Step_Level_First_Name}}. Today is ${{env.WORKFLOW_LEVEL_DAY_OF_WEEK}}
     env:
       Job_Level_Greeting: Hello #environment variables defined after steps
-
-  greeting_job_two:
-    runs-on: ubuntu-latest
-    env:
-      Greeting: Hello
-    steps:
-      - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
-        env:
-          First_Name: Mona
