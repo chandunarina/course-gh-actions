@@ -26,7 +26,7 @@ env:
 jobs:
   conditional_job:
     # ENV CONTEXT IS NOT AVAILABLE IN JOB CONDITION, BUT AVAILABLE IN STEP CONDITION
-    if: >- # Use >- or |- for trimmed output
+    if: #>- # Use >- or |- for trimmed output
         ${{ (github.ref == 'refs/heads/main1' || 
            github.ref == 'refs/heads/develop' || 
              startsWith(github.ref, 'refs/heads/feature/')) &&
@@ -40,10 +40,19 @@ jobs:
         run: echo "This step runs if the condition is met"    
       - name: Run Always
         if: ${{ always() }}
-        run: echo "env.isActorDependaBot==> ${{ !fromJson(env.isActorDependaBot) }}"
+        run: echo "!fromJson(env.isActorDependaBot)==> ${{ !fromJson(env.isActorDependaBot) }}"
       - name: Run Always 2
         if: ${{ always() }}
-        run: echo env.isActorDependaBot==> ${{ !env.isActorDependaBot }}
+        run: echo !env.isActorDependaBot==> ${{ !env.isActorDependaBot }}
+
+  conditional_job2:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello World!!"
+        if: true
+      - run: echo "Hello World 2!!"
+        if: ${{ env.isActorDependaBot }}
 
   job1:
     name: fromJSON example
