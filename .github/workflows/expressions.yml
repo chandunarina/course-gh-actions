@@ -51,7 +51,7 @@ jobs:
     steps:
       - run: echo "Hello World!!"
         if: true
-      - run: echo "Hello World 2!!" ${{ env.isActorDependaBot }}
+      - run: echo "Hello World 2!!" ${{ toJson(env.isActorDependaBot) }}
         if: ${{ env.isActorDependaBot }}
 
   job1:
