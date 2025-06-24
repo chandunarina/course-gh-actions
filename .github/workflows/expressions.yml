@@ -52,7 +52,7 @@ jobs:
       - run: echo "Hello World!!"
         if: true
       - run: echo "Hello World 2!!" ${{ toJson(env.isActorDependaBot) }}
-        if: ${{ env.isActorDependaBot }}
+        if: ${{ toJson(env.isActorDependaBot) }}
 
   job1:
     name: fromJSON example
