@@ -46,7 +46,7 @@ jobs:
         run: echo !env.isActorDependaBot==> ${{ !env.isActorDependaBot }}
 
   conditional_job2:
-    if: false
+    if: true
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World!!"
