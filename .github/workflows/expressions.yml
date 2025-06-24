@@ -1,5 +1,16 @@
 name: workflow_expressions
 on: workflow_dispatch
+
+env:
+  myNull: ${{ null }}
+  myBoolean: ${{ false }}
+  myIntegerNumber: ${{ 711 }}
+  myFloatNumber: ${{ -9.2 }}
+  myHexNumber: ${{ 0xff }}
+  myExponentialNumber: ${{ -2.99e-2 }}
+  myString: Mona the Octocat
+  myStringInBraces: ${{ 'It''s open source!' }}
+
 jobs:
   job1:
     name: fromJSON example
@@ -9,6 +20,9 @@ jobs:
     steps:
       - id: set-matrix
         run: echo "matrix={\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT
+
+      - name: Environment Variables
+        run: env | sort
   job2:
     needs: job1
     runs-on: ubuntu-latest
