@@ -34,12 +34,10 @@ jobs:
   conditional_job:
     # ENV CONTEXT IS NOT AVAILABLE IN JOB CONDITION, BUT AVAILABLE IN STEP CONDITION
     if: # Use >- or |- for trimmed output
-      ${{
-        (true ||
-          false ||
-            false) &&
-            false
-      }} 
+      ${{ (github.ref == 'refs/heads/main' || 
+      github.ref == 'refs/heads/develop' || 
+        startsWith(github.ref, 'refs/heads/feature/')) &&
+        (github.actor == 'dependabot[bot]')}}
 
     runs-on: ubuntu-latest
     steps:
