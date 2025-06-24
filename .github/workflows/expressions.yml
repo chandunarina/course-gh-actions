@@ -52,7 +52,11 @@ jobs:
         run: echo !env.isActorDependaBot==> ${{ !env.isActorDependaBot }}
 
   conditional_job2:
-    if: true
+    if: |
+      (github.ref == 'refs/heads/main' || 
+      github.ref == 'refs/heads/develop' || 
+        startsWith(github.ref, 'refs/heads/feature/')) &&
+        (github.actor != 'dependabot[bot]')
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World!!"
