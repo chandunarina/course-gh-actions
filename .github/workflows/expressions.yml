@@ -19,7 +19,7 @@ env:
 jobs:
   job0:
     if: |- # Use >- or |- for trimmed output
-        ${{ (github.ref == 'refs/heads/main' || 
+        ${{ (github.ref == 'refs/heads/main1' || 
            github.ref == 'refs/heads/develop' || 
              startsWith(github.ref, 'refs/heads/feature/')) 
             && github.actor != 'dependabot[bot]'}} 
