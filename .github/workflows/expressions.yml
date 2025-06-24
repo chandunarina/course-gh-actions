@@ -14,6 +14,9 @@ env:
   isFeatureBranch: ${{ startsWith(github.ref, 'refs/heads/feature/') }}
   isDevelopBranch: ${{ github.ref == 'refs/heads/develop' }}
   isActorDependaBot: ${{ github.actor == 'dependabot[bot]' }}
+  isMainOrDevOrFeature: ${{ (github.ref == 'refs/heads/main1' || 
+           github.ref == 'refs/heads/develop' || 
+             startsWith(github.ref, 'refs/heads/feature/')) }}
   should_Deploy: >- 
     ${{ (github.ref == 'refs/heads/main' || 
       github.ref == 'refs/heads/develop' || 
@@ -22,7 +25,7 @@ env:
 
 jobs:
   job0:
-
+    # ENV CONTEXT IS NOT AVAILABLE IN JOB CONDITION, BUT AVAILABLE IN STEP CONDITION
     if: >- # Use >- or |- for trimmed output
         ${{ (github.ref == 'refs/heads/main1' || 
            github.ref == 'refs/heads/develop' || 
