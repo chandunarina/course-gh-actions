@@ -23,9 +23,11 @@ env:
       startsWith(github.ref, 'refs/heads/feature/')) &&
       github.actor != 'dependabot[bot]'}}
   condition_value: |-
-    (true ||
-      false ||
-        false)
+    ${{
+      (true ||
+        false ||
+          false)
+    }}
 
 jobs:
   conditional_job:
