@@ -53,10 +53,10 @@ jobs:
 
   conditional_job2:
     if: |
-      (github.ref == 'refs/heads/main1' || 
+      (github.ref == 'refs/heads/main' || 
       github.ref == 'refs/heads/develop' || 
         startsWith(github.ref, 'refs/heads/feature/')) &&
-        (github.actor != 'dependabot[bot]')
+        (github.actor == 'dependabot[bot]')
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World!!"
