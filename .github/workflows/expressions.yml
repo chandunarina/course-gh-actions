@@ -10,19 +10,23 @@ env:
   myExponentialNumber: ${{ -2.99e-2 }}
   myString: Mona the Octocat
   myStringInBraces: ${{ 'It''s open source!' }}
+  isMainBranch: ${{ github.ref == 'refs/heads/main1' }}
+  isFeatureBranch: ${{ startsWith(github.ref, 'refs/heads/feature/') }}
+  isDevelopBranch: ${{ github.ref == 'refs/heads/develop' }}
+  isActorDependaBot: ${{ github.actor == 'dependabot[bot]' }}
   should_Deploy: >- 
     ${{ (github.ref == 'refs/heads/main' || 
       github.ref == 'refs/heads/develop' || 
-      startsWith(github.ref, 'refs/heads/feature/')) 
-      && github.actor != 'dependabot[bot]'}}
+      startsWith(github.ref, 'refs/heads/feature/')) &&
+      github.actor != 'dependabot[bot]'}}
 
 jobs:
   job0:
     if: |- # Use >- or |- for trimmed output
         ${{ (github.ref == 'refs/heads/main1' || 
            github.ref == 'refs/heads/develop' || 
-             startsWith(github.ref, 'refs/heads/feature/')) 
-            && github.actor != 'dependabot[bot]'}} 
+             startsWith(github.ref, 'refs/heads/feature/')) &&
+             github.actor != 'dependabot[bot]'}} 
     runs-on: ubuntu-latest
     steps:
       - name: Run a step
