@@ -10,12 +10,23 @@ env:
   myExponentialNumber: ${{ -2.99e-2 }}
   myString: Mona the Octocat
   myStringInBraces: ${{ 'It''s open source!' }}
-  should_Deploy: (github.ref == 'refs/heads/main' ||
-      github.ref == 'refs/heads/develop' ||
-      ${{ startsWith(github.ref, 'refs/heads/feature/') }}) &&
-      github.actor != 'dependabot[bot]'
+  should_Deploy: >- 
+    ${{ (github.ref == 'refs/heads/main' || 
+      github.ref == 'refs/heads/develop' || 
+      startsWith(github.ref, 'refs/heads/feature/')) 
+      && github.actor != 'dependabot[bot]'}}
 
 jobs:
+  job0:
+    if: |- # Use >- or |- for trimmed output
+        ${{ (github.ref == 'refs/heads/main' || 
+           github.ref == 'refs/heads/develop' || 
+             startsWith(github.ref, 'refs/heads/feature/')) 
+            && github.actor != 'dependabot[bot]'}} 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a step
+        run: echo "This step runs if the condition is met"    
   job1:
     name: fromJSON example
     runs-on: ubuntu-latest
@@ -29,6 +40,7 @@ jobs:
         run: |
             env | sort
             echo ${{ github.ref }}
+
   job2:
     needs: job1
     runs-on: ubuntu-latest
