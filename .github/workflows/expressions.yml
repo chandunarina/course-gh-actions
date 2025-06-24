@@ -10,7 +10,7 @@ env:
   myExponentialNumber: ${{ -2.99e-2 }}
   myString: Mona the Octocat
   myStringInBraces: ${{ 'It''s open source!' }}
-  isMainBranch: ${{ github.ref == 'refs/heads/main1' }}
+  isMainBranch: ${{ github.ref == 'refs/heads/main' }}
   isFeatureBranch: ${{ startsWith(github.ref, 'refs/heads/feature/') }}
   isDevelopBranch: ${{ github.ref == 'refs/heads/develop' }}
   isActorDependaBot: ${{ github.actor == 'dependabot[bot]' }}
