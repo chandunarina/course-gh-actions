@@ -7,22 +7,27 @@ jobs:
     set_env_variables:
         runs-on: ubuntu-latest
         steps:
-            - name: Set environment variable STEP_ONE_ENV_VAR
+            - name: "step1: Set environment variable STEP_ONE_ENV_VAR"
               id: step1
               run: |
+                env | sort
                 echo "STEP_ONE_ENV_VAR=STEP_ONE_ENV_VALUE" >> $GITHUB_ENV
                 echo "GITHUB_ENV of step1:= $GITHUB_ENV"
                 echo "updated GITHUB_ENV file of STEP1: $(cat $GITHUB_ENV)"
-            - name: Use environment variable setup in the previous step of the same job
+                env | sort
+            - name: 'step2 - Use environment variable setup in the previous step of the same job'
               id: step2
               run: |
+                env | sort
                 echo "The value of STEP_ONE_ENV_VAR is $STEP_ONE_ENV_VAR"
                 echo "STEP_TWO_ENV_VAR=STEP_TWO_ENV_VALUE" >> $GITHUB_ENV
                 echo "GITHUB_ENV of step2:= $GITHUB_ENV"
-            - name: Use environment variable setup in the previous step of the same job again
+                echo "updated GITHUB_ENV file of STEP2: $(cat $GITHUB_ENV)"
+                env | sort
+            - name: 'step3: Use environment variable setup in the previous step of the same job again'
               id: step3
               run: |
-                echo ${{ env.STEP_ONE_ENV_VAR }}  
+                echo ${{ env.STEP_ONE_ENV_VAR }}  : # this works
                 echo "STEP_3_ENV_VAR=STEP_3_ENV_VALUE" >> $GITHUB_ENV
                 echo "GITHUB_ENV of step3:= $GITHUB_ENV"
             - id: step4
