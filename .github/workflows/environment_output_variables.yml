@@ -8,7 +8,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: "step1: Set environment variable STEP_ONE_ENV_VAR"
-              id: step1
+              id: step1   # ENVIRONMENT VARIABLES SET IN A PREVIOUS STEP ARE PASSED TO THE NEXT STEP OF THE CURRENT JOB. 
               run: |
                 env | sort
                 echo "STEP_ONE_ENV_VAR=STEP_ONE_ENV_VALUE" >> $GITHUB_ENV
