@@ -14,7 +14,7 @@ env:
   isFeatureBranch: ${{ startsWith(github.ref, 'refs/heads/feature/') }}
   isDevelopBranch: ${{ github.ref == 'refs/heads/develop' }}
   isActorDependaBot: ${{ github.actor == 'dependabot[bot]' }}
-  isMainOrDevOrFeature: ${{ (github.ref == 'refs/heads/main1' || 
+  isMainOrDevOrFeature: ${{ (github.ref == 'refs/heads/main' || 
            github.ref == 'refs/heads/develop' || 
              startsWith(github.ref, 'refs/heads/feature/')) }}
   should_Deploy: >- 
