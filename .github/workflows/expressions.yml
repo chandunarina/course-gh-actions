@@ -33,7 +33,7 @@ env:
 jobs:
   conditional_job:
     # ENV CONTEXT IS NOT AVAILABLE IN JOB CONDITION, BUT AVAILABLE IN STEP CONDITION
-    if: |-
+    if: |-  # Use >- or |- for trimmed output
       ${{ (github.ref == 'refs/heads/main1' || 
       github.ref == 'refs/heads/develop' || 
         startsWith(github.ref, 'refs/heads/feature/')) &&
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World!!"
-        if: ${{ env.isMainBranch == 'false' }}
+        if: ${{ env.isMainBranch == 'false' }}  #This works and step is skipped
       - run: echo "Hello World 2!!" ${{ toJson(env.isActorDependaBot) }}
         if: ${{ env.isActorDependaBot == 'true' }}  #This works and step is skipped
 
