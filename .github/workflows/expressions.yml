@@ -53,7 +53,7 @@ jobs:
 
   conditional_job2:
     if: |
-      (github.ref == 'refs/heads/main' || 
+      (github.ref == 'refs/heads/main1' || 
       github.ref == 'refs/heads/develop' || 
         startsWith(github.ref, 'refs/heads/feature/')) &&
         (github.actor != 'dependabot[bot]')
