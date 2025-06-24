@@ -50,9 +50,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello World!!"
-        if: true
+        if: ${{ env.isMainBranch == 'false' }}
       - run: echo "Hello World 2!!" ${{ toJson(env.isActorDependaBot) }}
-        if: ${{ env.isActorDependaBot == 'true' }}
+        if: ${{ env.isActorDependaBot == 'true' }}  #This works and step is skipped
 
   job1:
     name: fromJSON example
