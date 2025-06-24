@@ -27,7 +27,7 @@ jobs:
             - name: 'step3: Use environment variable setup in the previous step of the same job again'
               id: step3
               run: |
-                echo ${{ env.STEP_ONE_ENV_VAR }}  : # this works
+                echo ${{ env.STEP_ONE_ENV_VAR }}  # this works
                 echo "STEP_3_ENV_VAR=STEP_3_ENV_VALUE" >> $GITHUB_ENV
                 echo "GITHUB_ENV of step3:= $GITHUB_ENV"
             - id: step4
