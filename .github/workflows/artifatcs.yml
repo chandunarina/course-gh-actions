@@ -39,6 +39,7 @@ jobs:
               path: ./download_artifact
           - name: Print Artifact Files
             run: ls -R
+            working-directory: ./download_artifact
     # deploy:
     #     name: download artifact
     #     runs-on: ubuntu-latest
