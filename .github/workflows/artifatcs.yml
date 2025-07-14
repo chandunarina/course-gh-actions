@@ -27,7 +27,7 @@ jobs:
               name: api_dll
               path: ./api/**/bin/Release/**/api.dll
               include-hidden-files: true
-              
+
           - name: Print Artifact Files
             run: ls -R
           - name: Output artifact ID
@@ -36,7 +36,7 @@ jobs:
             uses: actions/download-artifact@v4
             with:
               name: api_dll
-              path: '.'
+              path: ./download_artifact
           - name: Print Artifact Files
             run: ls -R
     # deploy:
