@@ -27,15 +27,11 @@ jobs:
               name: api_dll
               path: ./api/**/bin/Release/**/api.dll
               include-hidden-files: true
+              
+          - name: Print Artifact Files
+            run: ls -R
           - name: Output artifact ID
             run:  echo 'Artifact ID is ${{ steps.upload-api-single-file.outputs.artifact-id }}'
-
-    deploy:
-        name: download artifact
-        runs-on: ubuntu-latest
-        needs: 
-          - build
-        steps:
           - name: Download Artifact
             uses: actions/download-artifact@v4
             with:
@@ -43,5 +39,18 @@ jobs:
               path: '.'
           - name: Print Artifact Files
             run: ls -R
+    # deploy:
+    #     name: download artifact
+    #     runs-on: ubuntu-latest
+    #     needs: 
+    #       - build
+    #     steps:
+    #       - name: Download Artifact
+    #         uses: actions/download-artifact@v4
+    #         with:
+    #           name: api_dll
+    #           path: '.'
+    #       - name: Print Artifact Files
+    #         run: ls -R
 
         
