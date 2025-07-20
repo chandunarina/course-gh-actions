@@ -40,10 +40,10 @@ jobs:
       - name: Run sleep command for 5
         run: sleep 5
 
-      - run: date +%H:%M
+      - run: date +%H:%M:%S
 
-      - name: Sleep for 30 seconds
-        run: sleep 30s
+      - name: Sleep for 90 seconds
+        run: sleep 90s
         shell: bash
 
-      - run: date +%H:%M
+      - run: date +%H:%M:%S
