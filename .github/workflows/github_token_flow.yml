@@ -14,6 +14,12 @@ jobs:
           pwd
           dir
         shell: powershell
+      - run: (Get-Date).ToString("hh:mm:ss tt")
+      - name: Sleep for 90 seconds
+        run: Start-Sleep -s 90
+        shell: powershell
+      - run: (Get-Date).ToString("hh:mm:ss tt")
+        
   job1:
     runs-on: windows-latest
     steps:

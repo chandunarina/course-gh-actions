@@ -47,3 +47,18 @@ jobs:
         shell: bash
 
       - run: date +%H:%M:%S
+        
+  job:
+    runs-on: windows-latest
+    steps:
+      - name: print pwd
+        run: |
+          echo $pwd
+          pwd
+          dir
+        shell: powershell
+      - run: (Get-Date).ToString("hh:mm:ss tt")
+      - name: Sleep for 90 seconds
+        run: Start-Sleep -s 90
+        shell: powershell
+      - run: (Get-Date).ToString("hh:mm:ss tt")      
