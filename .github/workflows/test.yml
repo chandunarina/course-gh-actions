@@ -39,3 +39,11 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run sleep command for 5
         run: sleep 5
+
+      - run: date +%H:%M
+
+      - name: Sleep for 30 seconds
+        run: sleep 30s
+        shell: bash
+
+      - run: date +%H:%M
