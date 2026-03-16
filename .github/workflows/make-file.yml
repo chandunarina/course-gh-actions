@@ -15,17 +15,17 @@ jobs:
         run: mkdir cache
       - run: make create-cache
       - run: |
-          ls -r
+          ls -lr
           echo "$(cat hello_world.txt)"
         name: print cache folder
         working-directory: ./cache  
       - name: run make file target
         run: |
-          ls -R
+          ls -lR
           make clear-cache
       - name: print ${{github.workspace}} directory after clear-cache
         run: |
-          ls -R
+          ls -lR
 
       - name: copy make file
         run: |
@@ -34,7 +34,7 @@ jobs:
 
       - name: print ${{github.workspace}} directory after copy make file
         run: |
-          ls -R
+          ls -lR
 
       - name: create cache directory
         run: mkdir cache
@@ -44,7 +44,7 @@ jobs:
         working-directory: ${{github.workspace}}/make_file_dir
 
       - run: |
-          ls -r
+          ls -lr
           echo "$(cat hello_world.txt)"
         name: print cache folder
         working-directory: ${{github.workspace}}/make_file_dir/cache  
